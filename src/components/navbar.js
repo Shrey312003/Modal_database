@@ -9,7 +9,7 @@ import useFetch from '../hooks/useFetch';
 function NavBar() {
   const [searchValue, setSearchValue] = React.useState('');
 
-  const {data:modals} = useFetch("http://localhost:8000/data");
+  const {data:modals} = useFetch("https://my-json-server.typicode.com/Shrey312003/Modal_database/posts");
 
   console.log(modals);
 

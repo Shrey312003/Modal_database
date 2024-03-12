@@ -5,13 +5,14 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import useFetch from '../hooks/useFetch';
 import {CircularProgress} from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const Explore = () => {
     const { id } = useParams();
 
     //   const [modal,setModal] = useState(null);
 
-    const url = `http://localhost:8000/data/${id}`;
+    const url = `https://my-json-server.typicode.com/Shrey312003/Modal_database/posts/${id}`;
 
     const {data,loading,error} = useFetch(url);
 
@@ -69,6 +70,12 @@ const Explore = () => {
                 <Typography variant="subtitle1" color="text.secondary" gutterBottom>
                 By {val.author}
                 </Typography>
+
+                <Typography variant="subtitle1" color="text.secondary" gutterBottom>
+                Link 
+                <Link> {val.link} </Link>
+                </Typography>
+
                 <Typography variant="body1" paragraph>
                 {val.body}
                 </Typography>

@@ -8,7 +8,7 @@ import dataSlice from "../store/dataSlice";
 const ModelList = () => {
     const [data, setData] = useState(null);
     const [category, setCategory] = useState('');
-    const { data: data1, loading, error } = useFetch("http://localhost:8000/data");
+    const { data: data1, loading, error } = useFetch("https://my-json-server.typicode.com/Shrey312003/Modal_database/posts");
     const dispatch = useDispatch();
 
     // Pagination state

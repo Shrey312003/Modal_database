@@ -3,7 +3,7 @@ import useFetch from "../hooks/useFetch";
 import { Link } from "react-router-dom";
 const FeaturedList = () => {
 
-    const { data: articles } = useFetch("http://localhost:8000/data");
+    const { data: articles } = useFetch("https://my-json-server.typicode.com/Shrey312003/Modal_database/posts");
 
     let articlesByViews = [];
     let articlesByLikes = [];

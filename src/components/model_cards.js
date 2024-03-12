@@ -14,7 +14,7 @@ import axios from 'axios';
 export default function MediaCard({ card_data }) {
     const navigate = useNavigate();
     const [liked, setLiked] = React.useState(false); // State to track if the item is likedc
-    const url = `http://localhost:8000/data/${card_data.id}`
+    const url = `https://my-json-server.typicode.com/Shrey312003/Modal_database/posts/${card_data.id}`
 
     const truncateText = (text, maxLength) => {
         if (text.length <= maxLength) {
