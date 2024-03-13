@@ -64,7 +64,7 @@ const FeaturedList = ({data:articles,loading,error}) => {
                                     <CardMedia
                                         component="img"
                                         sx={{ width: 150, margin:"0 1% 0 2%" }}
-                                        image={`${process.env.PUBLIC_URL}/${article.pic}`}
+                                        image={article.pic}
                                         alt={article.title}
                                         
                                     />
