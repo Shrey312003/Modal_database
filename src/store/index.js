@@ -13,9 +13,11 @@ import {
   REGISTER,
   REHYDRATE,
 } from "redux-persist";
+import authSlice from "./authSlice";
 
 const rootReducer = combineReducers({
     modal: dataSlice.reducer,
+    auth: authSlice.reducer
 });
 
 const persistedReducer = persistReducer(

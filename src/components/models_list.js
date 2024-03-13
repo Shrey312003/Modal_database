@@ -5,22 +5,22 @@ import MediaCard from "./model_cards";
 import { useDispatch } from "react-redux";
 import dataSlice from "../store/dataSlice";
 
-const ModelList = () => {
+const ModelList = ({data:data1,loading,error}) => {
     const [data, setData] = useState(null);
     const [category, setCategory] = useState('');
-    const { data: data1, loading, error } = useFetch("https://my-json-server.typicode.com/Shrey312003/Modal_database/posts");
-    const dispatch = useDispatch();
+    // const { data: data1, loading, error } = useFetch("https://my-json-server.typicode.com/Shrey312003/Modal_database/posts");
+    // const dispatch = useDispatch();
 
     // Pagination state
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
 
-    useEffect(() => {
-        if (data1) {
-            setData(data1);
-            dispatch(dataSlice.actions.setData({ data: data1 }));
-        }
-    }, [data1, dispatch]);
+    // useEffect(() => {
+    //     if (data1) {
+    //         setData(data1);
+    //         dispatch(dataSlice.actions.setData({ data: data1 }));
+    //     }
+    // }, [data1, dispatch]);
 
     const categories = data ? Array.from(new Set(data.map(item => item.type))) : [];
 

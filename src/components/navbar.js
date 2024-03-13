@@ -3,15 +3,13 @@ import { AppBar, Box, Toolbar, Typography, Container, TextField, IconButton, But
 import { Autocomplete } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import { UseSelector, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useFetch from '../hooks/useFetch';
 
 function NavBar() {
   const [searchValue, setSearchValue] = React.useState('');
 
   const {data:modals} = useFetch("https://my-json-server.typicode.com/Shrey312003/Modal_database/posts");
-
-  console.log(modals);
 
   const [searchObj, setSearchObj] = React.useState(null);
 
@@ -26,19 +24,18 @@ function NavBar() {
 
   const handleSearch = () => {
     console.log('Perform search for:', searchValue);
-    console.log(searchObj);
     try{
       navigate(`/explore/${searchObj.id}`);
     }
 
     catch(error){
-      <div>Page not found</div>
+      console.log("Not found");
     }
     
   };
 
   const handleCreate = () => {
-    
+    navigate("/create");
   }
 
   // If you want the search to be performed when the user presses Enter
@@ -56,8 +53,6 @@ function NavBar() {
           <Typography
             variant="h6"
             noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
@@ -68,7 +63,8 @@ function NavBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+            <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>ATLAN</Link>
+            
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center'}}>

@@ -1,9 +1,11 @@
 import { Box, Card, CardMedia, CardContent, Typography, Grid, Paper } from "@mui/material";
 import useFetch from "../hooks/useFetch";
 import { Link } from "react-router-dom";
-const FeaturedList = () => {
 
-    const { data: articles } = useFetch("https://my-json-server.typicode.com/Shrey312003/Modal_database/posts");
+const FeaturedList = ({data:articles,loading,error}) => {
+
+    // const { data: articles } = useFetch("https://my-json-server.typicode.com/Shrey312003/Modal_database/posts");
+
 
     let articlesByViews = [];
     let articlesByLikes = [];

@@ -5,14 +5,21 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import useFetch from '../hooks/useFetch';
 import {CircularProgress} from '@mui/material';
-import { Link } from 'react-router-dom';
+import { CodeBlock } from "react-code-blocks";
+
+// import {Link} from '@mui/material';
 
 const Explore = () => {
     const { id } = useParams();
 
     //   const [modal,setModal] = useState(null);
 
-    const url = `https://my-json-server.typicode.com/Shrey312003/Modal_database/posts/${id}`;
+    const url = `http://localhost:8000/posts/${id}`
+
+    // const url = `https://my-json-server.typicode.com/Shrey312003/Modal_database/posts/${id}`;
+    // const notebookLink = 'https://colab.research.google.com/drive/1gjKeWMFrnuajSOpvqbsQ-T7paH0jDCPP?usp=sharing';
+
+    // const embedLink = notebookLink.replace("/edit", "/preview");
 
     const {data,loading,error} = useFetch(url);
 
@@ -59,8 +66,9 @@ const Explore = () => {
             <Card sx={{ width: '100%', maxWidth: 1000 }}>
             <CardMedia
                 component="img"
-                height="240"
-                image={`${process.env.PUBLIC_URL}/${val.pic}`}
+                height="300"
+                // image={`${process.env.PUBLIC_URL}/${val.pic}`}
+                image={val.pic}
                 alt={val.title}
             />
             <CardContent>
@@ -73,14 +81,25 @@ const Explore = () => {
 
                 <Typography variant="subtitle1" color="text.secondary" gutterBottom>
                 Link 
-                <Link> {val.link} </Link>
+                <a href={val.link}> {val.link} </a>
                 </Typography>
 
                 <Typography variant="body1" paragraph>
                 {val.body}
                 </Typography>
-                <Stack direction="row" spacing={1} sx={{ mb: 2 }}>
+
+                <Box sx={{margin:"2% 0 2% 0 "}}>
+                    <CodeBlock
+                        text={val.code}
+                        language='python'
+                        showLineNumbers={false}
+                    />
+                    
+                </Box>
+                
                 <Chip label={`Type: ${val.type}`} color="primary" />
+
+                <Stack direction="row" spacing={1} sx={{ mb: 2 , marginTop:"2%"}}>
                 <Chip icon={<Avatar sx={{ width: 24, height: 24 }}>👍</Avatar>} label={`${val.likes} Likes`} />
                 <Chip icon={<Avatar sx={{ width: 24, height: 24 }}>👁️</Avatar>} label={`${val.views} Views`} />
                 </Stack>
