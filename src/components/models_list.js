@@ -5,8 +5,8 @@ import MediaCard from "./model_cards";
 import { useDispatch } from "react-redux";
 import dataSlice from "../store/dataSlice";
 
-const ModelList = ({data:data1,loading,error}) => {
-    const [data, setData] = useState(null);
+const ModelList = ({data,loading,error}) => {
+    // const [data, setData] = useState(null);
     const [category, setCategory] = useState('');
     // const { data: data1, loading, error } = useFetch("https://my-json-server.typicode.com/Shrey312003/Modal_database/posts");
     // const dispatch = useDispatch();
