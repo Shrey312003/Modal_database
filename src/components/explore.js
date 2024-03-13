@@ -14,9 +14,9 @@ const Explore = () => {
 
     //   const [modal,setModal] = useState(null);
 
-    const url = `http://localhost:8000/posts/${id}`
+    // const url = `http://localhost:8000/posts/${id}`
 
-    // const url = `https://my-json-server.typicode.com/Shrey312003/Modal_database/posts/${id}`;
+    const url = `https://my-json-server.typicode.com/Shrey312003/Modal_database/posts/${id}`;
     // const notebookLink = 'https://colab.research.google.com/drive/1gjKeWMFrnuajSOpvqbsQ-T7paH0jDCPP?usp=sharing';
 
     // const embedLink = notebookLink.replace("/edit", "/preview");

@@ -30,7 +30,7 @@ const FeaturedList = ({data:articles,loading,error}) => {
                                         component="img"
                                         sx={{ width: 150, margin:"0 1% 0 2%" }}
                                         alt={article.title}
-                                        image={`${process.env.PUBLIC_URL}/${article.pic}`}
+                                        image={article.pic}
                                         
                                     />
                                     <CardContent sx={{ flex: '1 0 auto' }}>
