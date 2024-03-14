@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+//Custom hook to fetch data
 const useFetch = (url) => {
 
     const [data,setData] = useState(null);

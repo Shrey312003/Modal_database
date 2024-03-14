@@ -13,13 +13,12 @@ import {
   REGISTER,
   REHYDRATE,
 } from "redux-persist";
-import authSlice from "./authSlice";
 
 const rootReducer = combineReducers({
-    modal: dataSlice.reducer,
-    auth: authSlice.reducer
+    modal: dataSlice.reducer
 });
 
+//Persistor to keep the data in store even after loading
 const persistedReducer = persistReducer(
     {
         key: "root",
@@ -30,6 +29,8 @@ const persistedReducer = persistReducer(
     rootReducer
 );
 
+
+//Redux store
 const store = configureStore({
     reducer: persistedReducer,
     middleware: (getDefaultMiddleware) => 

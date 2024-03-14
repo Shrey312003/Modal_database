@@ -8,7 +8,8 @@ const regex = "((http|https)://)(www.)?[a-zA-Z0-9@:%._\\+~#?&//=]{2,256}\\.[a-z]
 
 const baseURL = "https://my-json-server.typicode.com/Shrey312003/Modal_database/posts";
 
-const loginStyles = () => {
+//styling
+const CreateStyles = () => {
     return {
         formContainer: {
             display: 'flex',
@@ -42,8 +43,7 @@ const loginStyles = () => {
     }
 }
 
- 
-
+//Validation schema using yup
 export const create_schema = yup.object().shape({
     title: yup.string().required("Required"),
     body: yup.string().required("Required"),
@@ -54,7 +54,7 @@ export const create_schema = yup.object().shape({
 });
 
 
-
+//Form to add new modals to site. Currently Post request works but no new modals are added as JSON Placeholder dont support
 const Create = () => {
     
     const navigate = useNavigate();
@@ -75,7 +75,9 @@ const Create = () => {
         }
     }
     
-    const styles = loginStyles();
+    const styles = CreateStyles();
+
+    //formik initilizations for form control 
     const {
         values,
         handleBlur,
@@ -98,6 +100,7 @@ const Create = () => {
         validationSchema: create_schema,
         onSubmit
     });
+    
 
     return ( 
         <Box sx={styles.formContainer}>

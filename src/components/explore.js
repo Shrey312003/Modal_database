@@ -9,25 +9,28 @@ import { CodeBlock } from "react-code-blocks";
 
 // import {Link} from '@mui/material';
 
+//Detailed component for the modals
 const Explore = () => {
-    const { id } = useParams();
+    const { id } = useParams(); //Extract id from url
 
     //   const [modal,setModal] = useState(null);
 
     // const url = `http://localhost:8000/posts/${id}`
 
-    const url = `https://my-json-server.typicode.com/Shrey312003/Modal_database/posts/${id}`;
+    const url = `https://my-json-server.typicode.com/Shrey312003/Modal_database/posts/${id}`; //Fetch data
     // const notebookLink = 'https://colab.research.google.com/drive/1gjKeWMFrnuajSOpvqbsQ-T7paH0jDCPP?usp=sharing';
 
     // const embedLink = notebookLink.replace("/edit", "/preview");
 
-    const {data,loading,error} = useFetch(url);
+    const {data,loading,error} = useFetch(url); 
 
     // const val1 = data.filter((da)=>{
     //     return da.id == id
     // })
 
     //   setModal(val);
+
+    //Views on clicking is updated
     const [val,setVal] = useState(null);
 
     useEffect(()=>{

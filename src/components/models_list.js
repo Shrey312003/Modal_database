@@ -7,7 +7,9 @@ import dataSlice from "../store/dataSlice";
 
 const ModelList = ({data,loading,error}) => {
     // const [data, setData] = useState(null);
-    const [category, setCategory] = useState('');
+
+    const [category, setCategory] = useState('');  //Filter categories
+
     // const { data: data1, loading, error } = useFetch("https://my-json-server.typicode.com/Shrey312003/Modal_database/posts");
     // const dispatch = useDispatch();
 
@@ -22,8 +24,10 @@ const ModelList = ({data,loading,error}) => {
     //     }
     // }, [data1, dispatch]);
 
+    //Categories are put in a set using map and then put in array
     const categories = data ? Array.from(new Set(data.map(item => item.type))) : [];
 
+    //on category selection
     const handleCategoryChange = (event) => {
         setCategory(event.target.value);
         setCurrentPage(1); // Reset to first page upon changing categories
@@ -37,7 +41,7 @@ const ModelList = ({data,loading,error}) => {
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentData = filteredData?.slice(indexOfFirstItem, indexOfLastItem);
 
-    // Change page handler
+    // Change page 
     const handleChangePage = (event, newPage) => {
         setCurrentPage(newPage);
     };
@@ -61,6 +65,8 @@ const ModelList = ({data,loading,error}) => {
                             label="Category"
                             onChange={handleCategoryChange}
                         >
+                            {/* //category can be changed using drop down list */}
+                        
                             <MenuItem value="">
                                 <em>All</em>
                             </MenuItem>

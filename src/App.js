@@ -5,10 +5,14 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from "react-redux";
 import store from "./store";
 import { persistor } from "./store";
+import { reportWebVitals } from './reportWebVitals';
+
+//React router used to define routes
 
 function App() {
   return (
     <Provider store={store}>
+      {/* Persistor */}
       <PersistGate persistor={persistor} loading={null}></PersistGate>
         <div className="App">
             <BrowserRouter>
@@ -19,5 +23,7 @@ function App() {
     </Provider>
   );
 }
+
+reportWebVitals(console.log);
 
 export default App;

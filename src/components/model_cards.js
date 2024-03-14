@@ -11,11 +11,13 @@ import FavoriteIcon from '@mui/icons-material/Favorite'; // Filled heart icon
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+//Modal cards
 export default function MediaCard({ card_data }) {
-    const navigate = useNavigate();
+    const navigate = useNavigate(); //navigate from react-router 
     const [liked, setLiked] = React.useState(false); // State to track if the item is likedc
-    const url = `https://my-json-server.typicode.com/Shrey312003/Modal_database/posts/${card_data.id}`
+    const url = `https://my-json-server.typicode.com/Shrey312003/Modal_database/posts/${card_data.id}` //Url to extract each card based on id
 
+    //showcase truncated text not the full one
     const truncateText = (text, maxLength) => {
         if (text.length <= maxLength) {
             return text;
@@ -23,11 +25,12 @@ export default function MediaCard({ card_data }) {
         return text.substring(0, maxLength) + '...';
     };
 
+    //On click on view more navigate to explore page
     const handleExplore = (id) => {
         navigate(`/explore/${id}`);
     };
 
-    
+    //Update the likes using put request
     const likeUpdate = (flag) => {
         let updatedVal;
         if(flag){
@@ -47,8 +50,7 @@ export default function MediaCard({ card_data }) {
         });
     }
     
-
-    
+    //Take decision based on like clicked or not
     const toggleLike = () => {
 
         if(!liked){

@@ -3,6 +3,7 @@ import Home from "./pages/home";
 import ExplorePage from "./pages/explore_page";
 import Create from "./pages/Create";
 
+//All the routes
 const routes = () => [
     {
         path: '/',

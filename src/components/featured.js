@@ -2,14 +2,16 @@ import { Box, Card, CardMedia, CardContent, Typography, Grid, Paper } from "@mui
 import useFetch from "../hooks/useFetch";
 import { Link } from "react-router-dom";
 
+//Featured wall
 const FeaturedList = ({data:articles,loading,error}) => {
 
     // const { data: articles } = useFetch("https://my-json-server.typicode.com/Shrey312003/Modal_database/posts");
 
 
-    let articlesByViews = [];
-    let articlesByLikes = [];
+    let articlesByViews = [];   //Sort articles by views
+    let articlesByLikes = [];   //Sort articles by likes
 
+    //function to sort
     if (articles && Array.isArray(articles)) {
         articlesByViews = [...articles].sort((a, b) => b.views - a.views);
         articlesByLikes = [...articles].sort((a, b) => b.likes - a.likes);
