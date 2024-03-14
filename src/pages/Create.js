@@ -3,11 +3,12 @@ import { TextField, Button, Box, Typography, Link } from '@mui/material';
 import * as yup from "yup";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import {Input} from '@mui/material';
 
 const regex = "((http|https)://)(www.)?[a-zA-Z0-9@:%._\\+~#?&//=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%._\\+~#?&//=]*)";
 
 const baseURL = "https://my-json-server.typicode.com/Shrey312003/Modal_database/posts";
-
 //styling
 const CreateStyles = () => {
     return {
@@ -54,6 +55,7 @@ export const create_schema = yup.object().shape({
 });
 
 
+
 //Form to add new modals to site. Currently Post request works but no new modals are added as JSON Placeholder dont support
 const Create = () => {
     
@@ -61,6 +63,7 @@ const Create = () => {
 
     const onSubmit = async (values,actions) => {
         console.log("values");
+        
         try{
             console.log(values);
             const response = await axios.post(baseURL,values);

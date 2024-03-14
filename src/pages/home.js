@@ -33,13 +33,13 @@ const Home = () => {
             <div >
                 <Grid container spacing={4}> 
                 {/* //Grid is used from material ui */}
-                    <Grid item md={8} xs={12}>
+                    <Grid item md={8} sm = {8} xs={12}>
                         <ModelList data={data} loading={loading} error={error}></ModelList> 
                         {/* //Modals displayed on home page */}
                         
                     </Grid>
 
-                    <Grid item md={4} xs={12}>
+                    <Grid item md={4} sm = {12} xs={12}>
                         <FeaturedList data={data} loading={loading} error={error}></FeaturedList> 
                         {/* // Featured wall modals */}
                     </Grid>

@@ -30,20 +30,23 @@ const FeaturedList = ({data:articles,loading,error}) => {
                                 <Card sx={{ display: 'flex', alignItems: 'center', height: '150px'}}>
                                     <CardMedia
                                         component="img"
-                                        sx={{ width: 150, margin:"0 1% 0 2%" }}
+                                        sx={{ width: "40%", margin:"0 1% 0 2%" }}
                                         alt={article.title}
                                         image={article.pic}
                                         
                                     />
                                     <CardContent sx={{ flex: '1 0 auto' }}>
                                         <Typography variant="subtitle1">
-                                            <Link to ={`/explore/${article.id}`}>
+                                            <Link 
+                                            style={{ textDecoration: 'none', color: 'inherit' }} 
+                                            to ={`/explore/${article.id}`}
+                                            >
                                                 {article.title}
                                             </Link>
                                             
                                         </Typography>
                                         <Typography variant="body2" color="text.secondary">
-                                            {article.author}
+                                            Author: {article.author}
                                         </Typography>
                                         <Typography variant="body2" color="text.secondary">
                                             Views: {article.views}
@@ -65,19 +68,22 @@ const FeaturedList = ({data:articles,loading,error}) => {
                                 <Card sx={{ display: 'flex', alignItems: 'center', height: '150px' }}>
                                     <CardMedia
                                         component="img"
-                                        sx={{ width: 150, margin:"0 1% 0 2%" }}
+                                        sx={{ width: "40%", margin:"0 1% 0 2%" }}
                                         image={article.pic}
                                         alt={article.title}
                                         
                                     />
                                     <CardContent sx={{ flex: '1 0 auto' }}>
                                         <Typography variant="subtitle1">
-                                            <Link to ={`/explore/${article.id}`}>
+                                            <Link 
+                                            style={{ textDecoration: 'none', color: 'inherit' }}
+                                            to ={`/explore/${article.id}`}
+                                            >
                                                 {article.title}
                                             </Link>
                                         </Typography>
                                         <Typography variant="body2" color="text.secondary">
-                                            {article.author}
+                                            Author: {article.author}
                                         </Typography>
                                         <Typography variant="body2" color="text.secondary">
                                             Likes: {article.likes}

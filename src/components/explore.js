@@ -1,48 +1,27 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Card, CardContent, Typography, Chip, Stack, Avatar, CardMedia } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { Box, Card, CardContent, Typography, Chip, Stack, Avatar, CardMedia, CircularProgress } from '@mui/material';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import useFetch from '../hooks/useFetch';
-import {CircularProgress} from '@mui/material';
 import { CodeBlock } from "react-code-blocks";
 
-// import {Link} from '@mui/material';
-
-//Detailed component for the modals
+//Get the complete data of the model
 const Explore = () => {
-    const { id } = useParams(); //Extract id from url
+    const { id } = useParams(); //get the id from url
+    const url = `https://my-json-server.typicode.com/Shrey312003/Modal_database/posts/${id}`;
+    const { data, loading, error } = useFetch(url);
 
-    //   const [modal,setModal] = useState(null);
+    const [val, setVal] = useState(null); //views update 
 
-    // const url = `http://localhost:8000/posts/${id}`
-
-    const url = `https://my-json-server.typicode.com/Shrey312003/Modal_database/posts/${id}`; //Fetch data
-    // const notebookLink = 'https://colab.research.google.com/drive/1gjKeWMFrnuajSOpvqbsQ-T7paH0jDCPP?usp=sharing';
-
-    // const embedLink = notebookLink.replace("/edit", "/preview");
-
-    const {data,loading,error} = useFetch(url); 
-
-    // const val1 = data.filter((da)=>{
-    //     return da.id == id
-    // })
-
-    //   setModal(val);
-
-    //Views on clicking is updated
-    const [val,setVal] = useState(null);
-
-    useEffect(()=>{
-        if(data){
+    useEffect(() => {
+        if (data) {
             setVal(data);
             console.log(data);
         }
-    },[data])
+    }, [data])
 
     useEffect(() => {
         if (val) {
-            // Increment views and send the updated views to the server
             const updatedVal = { ...val, views: val.views + 1 };
             axios.put(url, updatedVal)
                 .then(resp => {
@@ -54,26 +33,37 @@ const Explore = () => {
         }
     }, [val, url]);
 
-    // console.log('Public URL:', process.env.PUBLIC_URL + val.pic);
-
     return (
-    <Box sx={{ marginTop:"10px", display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', padding: '20px' }}>
-        {(loading) && (
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+        <Box sx={{ 
+            marginTop: "10px", 
+            display: 'flex', 
+            justifyContent: 'center', 
+            alignItems: 'center', 
+            height: '100vh', 
+            padding: '20px',
+        }}>
+            {loading && (
                 <CircularProgress />
-            </div>
-        )} 
-        {!loading && error && <div>Error: {error.message}</div>}
-        {!loading && val && 
-         (
-            <Card sx={{ width: '100%', maxWidth: 1000 }}>
-            <CardMedia
-                component="img"
-                height="300"
-                // image={`${process.env.PUBLIC_URL}/${val.pic}`}
-                image={val.pic}
-                alt={val.title}
-            />
+            )}
+            {!loading && error && <div>Error: {error.message}</div>}
+            {!loading && val && (
+                <Card sx={{ 
+                    width: '100%', 
+                    maxWidth: '1000px', 
+                    mx: 'auto',
+                    boxShadow: 3, 
+                    p: {
+                        xs: 1, 
+                        sm: 2, 
+                        md: 3 
+                    },
+                }}>
+                    <CardMedia
+                        component="img"
+                        height="300"
+                        image={val.pic}
+                        alt={val.title}
+                    />
             <CardContent>
                 <Typography variant="h4" gutterBottom>
                 {val.title}
