@@ -35,7 +35,7 @@ const Explore = () => {
 
     return (
         <Box sx={{ 
-            marginTop: theme => theme.spacing(1), // Adjust the numeric value based on your navbar's height
+            marginTop: theme => theme.spacing(8), // Adjust the numeric value based on your navbar's height
             display: 'flex', 
             justifyContent: 'center', 
             alignItems: 'center', 
