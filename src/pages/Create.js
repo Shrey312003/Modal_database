@@ -50,6 +50,7 @@ export const create_schema = yup.object().shape({
     body: yup.string().required("Required"),
     author: yup.string().required("Required"),
     type : yup.string().required("Required"),
+    code : yup.string().required("Required"),
     link: yup.string().matches(regex,{message:"Give a valid link"}).required("Required"),
     pic: yup.string().matches(regex,{message:"Give a valid image link"}).required("Required")
 });
@@ -98,7 +99,8 @@ const Create = () => {
             link:'',
             pic: '',
             likes: 0,
-            views: 0
+            views: 0,
+            code: ''
         },
         validationSchema: create_schema,
         onSubmit
@@ -144,8 +146,10 @@ const Create = () => {
                     {touched.body && errors.body}
                 </Typography>
 
+                
+
                 <TextField
-                    label="author"
+                    label="Author"
                     type="text"
                     variant="outlined"
                     name="author"
@@ -160,7 +164,7 @@ const Create = () => {
                 </Typography>
 
                 <TextField
-                    label="type"
+                    label="Type"
                     type="text"
                     variant="outlined"
                     name="type"
@@ -175,7 +179,25 @@ const Create = () => {
                 </Typography>
 
                 <TextField
-                    label="link"
+                    id="outlined-textarea"
+                    label="Code"
+                    placeholder="Placeholder"
+                    variant="outlined"
+                    name="code"
+                    type="text"
+                    sx={styles.inputField}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.code}
+                    error={errors.code && touched.code}
+                    multiline
+                />
+                <Typography variant="body2" sx={{ color: 'red',marginBottom:"5px" }}>
+                    {touched.code && errors.code}
+                </Typography>
+
+                <TextField
+                    label="Link"
                     type="text"
                     variant="outlined"
                     name="link"
@@ -190,7 +212,7 @@ const Create = () => {
                 </Typography>
 
                 <TextField
-                    label="pic"
+                    label="Pic"
                     type="text"
                     variant="outlined"
                     name="pic"
